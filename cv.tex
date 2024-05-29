@@ -1,0 +1,68 @@
+%% cv.tex
+%
+% Author: Dragan Vujović <dvujovic@protonmail.ch>
+% URL: https://github.com/draganvu/cv-latex
+% License: MIT
+%
+
+\documentclass[11pt, a4paper]{article}
+
+% Packages
+\usepackage{geometry} % used setting for page margins
+\usepackage{hyperref} % used to set hyperlinks and pdf metadata
+
+
+% Set page margins (assumes A4 paper)
+\geometry{
+  left=2.5cm,
+  top=2.5cm,
+  right=2.5cm,
+  bottom=2.5cm
+}
+
+% Prevent paragraph indentation
+\setlength\parindent{0pt}
+
+% Define hyperlink appearance and metadata for pdf properties
+\hypersetup{
+  pdftitle    = {Dragan Vujović: Curriculum Vitae},
+  pdfauthor   = {Dragan Vujović},
+  pdfkeywords = {software engineering, cv, resume},
+  pdfsubject  = {Curriculum Vitae},
+  colorlinks  = true,
+  urlcolor    = blue,
+  citecolor   = magenta,
+  linkcolor   = red,
+}
+
+\begin{document}
+
+\begin{Huge}
+  Dragan Vujović
+\end{Huge}
+
+\medskip
+Geneva, Switzerland\\
+Email: \href{mailto:dvujovic@protonmail.ch}{dvujovic@protonmail.ch}\\
+Phone: +555 5555 5555\\
+Github: \href{https://github.com/draganvu}{https://github.com/draganvu}\\
+Website: \href{https://draganvu.github.io/}{https://draganvu.github.io/}
+
+\section*{Professional Experience}
+Software Company Ltd.\\
+2016--2019\\
+
+Software Company 2 Ltd.\\
+2017--2019
+
+\section*{Education}
+University of Montenegro\\
+2009-2013\\
+Coursework: Algorithms, Mathematics, Databases
+
+\section*{Technical Skills}
+Programming: Python, Rust, R, SQL (PostgreSQL, mySQL)\\
+Frameworks: Pandas, NumPy\\
+Tools: Linux, Docker, Git, \LaTeX
+
+\end{document}
