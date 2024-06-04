@@ -10,7 +10,7 @@
 % Packages
 \usepackage{geometry} % used setting for page margins
 \usepackage{hyperref} % used to set hyperlinks and pdf metadata
-
+\usepackage{titlesec} % used to customize sections
 
 % Set page margins (assumes A4 paper)
 \geometry{
@@ -22,6 +22,11 @@
 
 % Prevent paragraph indentation
 \setlength\parindent{0pt}
+
+% Customize sections
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{\thesection}{}{}[\titleline{\color{red}\titlerule[.4pt]}]
 
 % Define hyperlink appearance and metadata for pdf properties
 \hypersetup{
@@ -50,13 +55,15 @@ Website: \href{https://draganvu.github.io/}{https://draganvu.github.io/}
 
 \section*{Professional Experience}
 Software Company Ltd.\\
+Project Lead\\
 2016--2019\\
 
 Software Company 2 Ltd.\\
-2017--2019
+Software Engineer\\
+2014--2016
 
 \section*{Education}
-University of Montenegro\\
+University of Montenegro (UCG)\\
 2009-2013\\
 Coursework: Algorithms, Mathematics, Databases
 
