@@ -12,6 +12,7 @@
 \usepackage{hyperref} % used to set hyperlinks and pdf metadata
 \usepackage{titlesec} % used to customize sections
 \usepackage{setspace} % custom line spacing
+\usepackage{enumitem} % needed for item spacing
 
 % Set page margins (assumes A4 paper)
 \geometry{
@@ -27,16 +28,21 @@
 % Set line spacing
 \setstretch{1.0}
 
+% Set item spacing
+\setlist[itemize]{itemsep=0em, topsep=0.5em}
+
 % Customize sections
 \titleformat{\section}
 {\normalfont\Large\bfseries}
 {\thesection}{}{}[\titleline{\color{red}\titlerule[.4pt]}]
 
+\newcommand{\myname}{Dragan Vujović}
+
 % Define hyperlink appearance and metadata for pdf properties
 \hypersetup{
-  pdftitle    = {Dragan Vujović: Curriculum Vitae},
-  pdfauthor   = {Dragan Vujović},
-  pdfkeywords = {software engineering, cv, resume},
+  pdftitle    = {\myname: Curriculum Vitae},
+  pdfauthor   = {\myname},
+  pdfkeywords = {Software Engineering, CV, Resume},
   pdfsubject  = {Curriculum Vitae},
   colorlinks  = true,
   urlcolor    = blue,
@@ -47,7 +53,7 @@
 \begin{document}
 
 \begin{Huge}
-  Dragan Vujović
+  \myname
 \end{Huge}
 
 \medskip Geneva, Switzerland
