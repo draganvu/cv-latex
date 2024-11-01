@@ -1,15 +1,20 @@
-% cv-class.cv
+%% `cv-class.cv' - Personal LaTeX class template for CV
 %
-% Author: Test Author
-% URL: www.github.com/test
+% Author: Dragan Vujović <dvujovic@protonmail.ch> 
+% URL: https://github.com/draganvu/cv-latex
 % License: MIT
 %
 
+% Identification
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cv-class}[2024/10/24 LaTeX class for CV]
 
-% Base class on article class
-\LoadClass{article}
+% 
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
+% Inherit commands from the standard `article' class
+\LoadClass[a4paper]{article}
 
 %% 3rd party Packages
 % Required for language support 
@@ -42,19 +47,16 @@
 \titlespacing{\section}{0pt}{2ex}{2ex}
 
 \titleformat{\section}
-{\normalfont\Large\bfseries}
-{}
-{0em}
-{}[{\color{lightgrey}\titlerule[0.4pt]}]
+{\normalfont\Large\bfseries}{}{0em}{}[{\color{lightgrey}\titlerule[0.4pt]}]
 
 % Set line spacing
 \setstretch{1.2}
 
 % Remove paragraph indentation
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{0em}
 
 % Itemize settings
-\setlist{topsep=1ex, itemsep=.15ex}
+\setlist{topsep=.5ex, itemsep=0ex, partopsep=1ex}
 
 % New commands
 \newcommand*{\myname}[1]{\def\@myname{#1}}
