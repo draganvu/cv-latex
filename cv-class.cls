@@ -59,33 +59,45 @@
 \setlist{topsep=.5ex, itemsep=0ex, partopsep=1ex}
 
 % New commands
-\newcommand*{\myname}[1]{\def\@myname{#1}}
-\newcommand*{\printname}{\@myname}
+\newcommand*{\myname}[1]{\def\myname{#1}}
+\newcommand*{\printname}{\myname}
 
-\newcommand*{\myaddress}[1]{\def\@myaddress{#1}}
-\newcommand*{\printaddress}{\@myaddress}
+\newcommand*{\myaddress}[1]{\def\myaddress{#1}}
+\newcommand*{\printaddress}{\myaddress}
 
-\newcommand*{\phonenum}[1]{\def\@phonenum{#1}}
-\newcommand*{\printphonenum}{\@phonenum}
+\newcommand*{\phone}[2]{%
+  \def\phonelabel{#1}%
+  \def\phonenum{#2}%
+}
+\newcommand*{\printphonenum}{\phonelabel\ \phonenum}
 
-\newcommand*{\email}[1]{\def\@email{#1}}
-\newcommand*{\printemail}{\@email}
+\newcommand*{\email}[2]{%
+  \def\emaillabel{#1}%
+  \def\emailaddress{#2}%
+}
+\newcommand*{\printemail}{\emaillabel\ \emailaddress}
 
-\newcommand*{\website}[1]{\def\@website{#1}}
-\newcommand*{\printwebsite}{\@website}
+\newcommand*{\weburl}[2]{%
+  \def\weburllabel{#1}%
+  \def\weburladdress{#2}%
+}
+\newcommand*{\printurl}{\weburllabel\ \weburladdress}
 
-\newcommand*{\github}[1]{\def\@github{#1}}
-\newcommand*{\printgithub}{\@github}
+\newcommand*{\github}[2]{%
+  \def\githublabel{#1}%
+  \def\githubaddress{#2}%
+}
+\newcommand*{\printgithub}{\githublabel\ \githubaddress}
 
 \newcommand{\makecvheader}{
   {\Huge \printname}
   
   \smallskip
   \printaddress \\
-  Phone: \printphonenum \\
-  Email: \printemail \\
-  Website: \printwebsite \\
-  Github: \printgithub
+  \printphonenum \\
+  \printemail \\
+  \printurl \\
+  \printgithub
 }
 
 \newcommand{\jobheader}[4]{%
@@ -117,9 +129,9 @@
 % PDF Metadata
 \AtBeginDocument{
   \hypersetup{
-    pdfauthor   = {\@myname},
+    pdfauthor   = {\myname},
     pdfkeywords = {Software engineering, Curriculum Vitae, Resume},
-    pdftitle    = {\@myname: Curriculum Vitae},
+    pdftitle    = {\myname: Curriculum Vitae},
     pdfsubject  = {Curriculum Vitae}
   }
 }
