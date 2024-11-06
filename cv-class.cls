@@ -84,24 +84,27 @@
 }
 
 \newcommand*{\printname}{\@myname}
-\newcommand*{\printaddress}{\@myaddress}
+%\newcommand*{\printaddress}{\@myaddress}
 \newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
 \newcommand*{\printemail}{\@emaillabel\ \@emailaddress}
 \newcommand*{\printurl}{\@weburllabel\ \@weburladdress}
+\newcommand*{\printgithub}{\@githublabel\ \@githubaddress}
 
-\newcommand*{\printgithub}{%
-  \ifdefined\@githublabel
-    \ifdefined\@githubaddress
-      \@githublabel\ \@githubaddress
-    \fi
-  \fi
+\RequirePackage{ifthen}
+
+\newcommand*{\printaddress}{%
+  \ifthenelse{\isundefined{\@myaddress}}%
+  {}%
+  {%
+    \@myaddress \\
+  }%
 }
 
 \newcommand{\makecvheader}{
   {\Huge \printname}
   
   \smallskip
-  \printaddress \\
+  \printaddress
   \printphonenum \\
   \printemail \\
   \printurl \\
