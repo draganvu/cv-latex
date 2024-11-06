@@ -59,35 +59,43 @@
 \setlist{topsep=.5ex, itemsep=0ex, partopsep=1ex}
 
 % New commands
-\newcommand*{\myname}[1]{\def\myname{#1}}
-\newcommand*{\printname}{\myname}
+\newcommand*{\myname}[1]{\def\@myname{#1}}
 
-\newcommand*{\myaddress}[1]{\def\myaddress{#1}}
-\newcommand*{\printaddress}{\myaddress}
+\newcommand*{\myaddress}[1]{\def\@myaddress{#1}}
 
 \newcommand*{\phone}[2]{%
-  \def\phonelabel{#1}%
-  \def\phonenum{#2}%
+  \def\@phonelabel{#1}%
+  \def\@phonenum{#2}%
 }
-\newcommand*{\printphonenum}{\phonelabel\ \phonenum}
 
 \newcommand*{\email}[2]{%
-  \def\emaillabel{#1}%
-  \def\emailaddress{#2}%
+  \def\@emaillabel{#1}%
+  \def\@emailaddress{#2}%
 }
-\newcommand*{\printemail}{\emaillabel\ \emailaddress}
 
 \newcommand*{\weburl}[2]{%
-  \def\weburllabel{#1}%
-  \def\weburladdress{#2}%
+  \def\@weburllabel{#1}%
+  \def\@weburladdress{#2}%
 }
-\newcommand*{\printurl}{\weburllabel\ \weburladdress}
 
 \newcommand*{\github}[2]{%
-  \def\githublabel{#1}%
-  \def\githubaddress{#2}%
+  \def\@githublabel{#1}%
+  \def\@githubaddress{#2}%
 }
-\newcommand*{\printgithub}{\githublabel\ \githubaddress}
+
+\newcommand*{\printname}{\@myname}
+\newcommand*{\printaddress}{\@myaddress}
+\newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
+\newcommand*{\printemail}{\@emaillabel\ \@emailaddress}
+\newcommand*{\printurl}{\@weburllabel\ \@weburladdress}
+
+\newcommand*{\printgithub}{%
+  \ifdefined\@githublabel
+    \ifdefined\@githubaddress
+      \@githublabel\ \@githubaddress
+    \fi
+  \fi
+}
 
 \newcommand{\makecvheader}{
   {\Huge \printname}
@@ -129,9 +137,9 @@
 % PDF Metadata
 \AtBeginDocument{
   \hypersetup{
-    pdfauthor   = {\myname},
+    pdfauthor   = {\@myname},
     pdfkeywords = {Software engineering, Curriculum Vitae, Resume},
-    pdftitle    = {\myname: Curriculum Vitae},
+    pdftitle    = {\@myname: Curriculum Vitae},
     pdfsubject  = {Curriculum Vitae}
   }
 }
