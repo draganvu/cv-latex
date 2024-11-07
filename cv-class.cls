@@ -65,37 +65,32 @@
 
 \newcommand*{\myaddress}[1]{\def\@myaddress{#1}}
 
-\newcommand*{\phone}[2]{%
-  \def\@phonelabel{#1}%
-  \def\@phonenum{#2}%
-}
+\newcommand*{\phone}[2]{\def\@phonelabel{#1}\def\@phonenum{#2}}
 
-\newcommand*{\email}[2]{%
-  \def\@emaillabel{#1}%
-  \def\@emailaddress{#2}%
-}
+\newcommand*{\email}[2]{\def\@emaillabel{#1}\def\@emailaddress{#2}}
 
-\newcommand*{\weburl}[2]{%
-  \def\@weburllabel{#1}%
-  \def\@weburladdress{#2}%
-}
+\newcommand*{\weburl}[2]{\def\@weburllabel{#1}\def\@weburladdress{#2}}
 
-\newcommand*{\github}[2]{%
-  \def\@githublabel{#1}%
-  \def\@githubaddress{#2}%
-}
+\newcommand*{\github}[2]{\def\@githublabel{#1}\def\@githubaddress{#2}}
 
 \newcommand*{\printname}{\@myname}
 \newcommand*{\printaddress}{\@myaddress}
 \newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
 \newcommand*{\printemail}{\@emaillabel\ \@emailaddress}
-\newcommand*{\printurl}{\@weburllabel\ \@weburladdress}
+
+\newcommand*{\printurl}{%
+  \ifthenelse{\isundefined{\@weburllabel} \and \isundefined{\@weburladdress}}%
+  {}%
+  {%
+    \@weburllabel\ \@weburladdress\par%
+  }%
+}
 
 \newcommand*{\printgithub}{%
   \ifthenelse{\isundefined{\@githublabel} \and \isundefined{\@githubaddress}}%
   {}%
   {%
-    \@githublabel\ \@githubaddress%
+    \@githublabel\ \@githubaddress\par%
   }%
 }
 
@@ -105,8 +100,8 @@
   \smallskip
   \printaddress \\
   \printphonenum \\
-  \printemail \\
-  \printurl \par
+  \printemail \par
+  \printurl
   \printgithub
 }
 
