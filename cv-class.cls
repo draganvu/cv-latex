@@ -31,6 +31,8 @@
 \RequirePackage{hyperref}
 % Required to customize itemize
 \RequirePackage{enumitem}
+% Required for if/then/else
+\RequirePackage{ifthen}
 
 % Page Layout
 \geometry{
@@ -84,19 +86,16 @@
 }
 
 \newcommand*{\printname}{\@myname}
-%\newcommand*{\printaddress}{\@myaddress}
+\newcommand*{\printaddress}{\@myaddress}
 \newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
 \newcommand*{\printemail}{\@emaillabel\ \@emailaddress}
 \newcommand*{\printurl}{\@weburllabel\ \@weburladdress}
-\newcommand*{\printgithub}{\@githublabel\ \@githubaddress}
 
-\RequirePackage{ifthen}
-
-\newcommand*{\printaddress}{%
-  \ifthenelse{\isundefined{\@myaddress}}%
+\newcommand*{\printgithub}{%
+  \ifthenelse{\isundefined{\@githublabel} \and \isundefined{\@githubaddress}}%
   {}%
   {%
-    \@myaddress \\
+    \@githublabel\ \@githubaddress%
   }%
 }
 
@@ -104,10 +103,10 @@
   {\Huge \printname}
   
   \smallskip
-  \printaddress
+  \printaddress \\
   \printphonenum \\
   \printemail \\
-  \printurl \\
+  \printurl \par
   \printgithub
 }
 
