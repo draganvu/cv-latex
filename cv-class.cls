@@ -75,22 +75,23 @@
 
 \newcommand*{\printname}{\@myname}
 \newcommand*{\printaddress}{\@myaddress}
+
 \newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
 \newcommand*{\printemail}{\@emaillabel\ \@emailaddress}
 
 \newcommand*{\printurl}{%
-  \ifthenelse{\isundefined{\@weburllabel} \and \isundefined{\@weburladdress}}%
-  {}%
-  {%
-    \@weburllabel\ \@weburladdress\par%
+  \ifthenelse{\isundefined{\@weburladdress}}{}{%
+    \ifthenelse{\isundefined{\@weburllabel} \or \equal{\@weburllabel}{}}%
+    {\@weburladdress\par}%
+    {\@weburllabel\ \@weburladdress\par}%
   }%
 }
 
 \newcommand*{\printgithub}{%
-  \ifthenelse{\isundefined{\@githublabel} \and \isundefined{\@githubaddress}}%
-  {}%
-  {%
-    \@githublabel\ \@githubaddress\par%
+  \ifthenelse{\isundefined{\@githubaddress}}{}{%
+    \ifthenelse{\isundefined{\@githublabel} \or \equal{\@githublabel}{}}%
+    {\@githubaddress\par}%
+    {\@githublabel\ \@githubaddress\par}%
   }%
 }
 
@@ -117,7 +118,7 @@
 
 \newcommand{\jobitem}[1]{%
   \begin{itemize}
-      #1
+    #1
   \end{itemize}
 }
 
