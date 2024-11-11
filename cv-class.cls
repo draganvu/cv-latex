@@ -42,6 +42,12 @@
  bottom=2cm
 }
 
+\hypersetup{
+  colorlinks=true,
+  linkcolor=red,
+  urlcolor=blue
+}
+
 % Colors
 \definecolor{lightgrey}{rgb}{0.7, 0.7, 0.7}
 
@@ -73,25 +79,31 @@
 
 \newcommand*{\github}[2]{\def\@githublabel{#1}\def\@githubaddress{#2}}
 
+\newcommand*{\https}{https://}
 \newcommand*{\printname}{\@myname}
 \newcommand*{\printaddress}{\@myaddress}
 
 \newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
-\newcommand*{\printemail}{\@emaillabel\ \@emailaddress}
+
+\newcommand*{\printemail}{%
+  \ifthenelse{\isundefined{\@emaillabel}}
+  {\href{mailto:\@emailaddress}{\@emailaddress}\par}
+  {\@emaillabel\ \href{mailto:\@emailaddress}{\@emailaddress}\par}
+}
 
 \newcommand*{\printurl}{%
   \ifthenelse{\isundefined{\@weburladdress}}{}{%
     \ifthenelse{\isundefined{\@weburllabel} \or \equal{\@weburllabel}{}}%
-    {\@weburladdress\par}%
-    {\@weburllabel\ \@weburladdress\par}%
+    {\href{\https\@weburladdress}{\@weburladdress}\par}%
+    {\@weburllabel\ \href{\https\@weburladdress}{\@weburladdress}\par}%
   }%
 }
 
 \newcommand*{\printgithub}{%
   \ifthenelse{\isundefined{\@githubaddress}}{}{%
     \ifthenelse{\isundefined{\@githublabel} \or \equal{\@githublabel}{}}%
-    {\@githubaddress\par}%
-    {\@githublabel\ \@githubaddress\par}%
+    {\href{\https\@githubaddress}{\@githubaddress}\par}%
+    {\@githublabel\ \href{\https\@githubaddress}{\@githubaddress}\par}%
   }%
 }
 
@@ -101,7 +113,7 @@
   \smallskip
   \printaddress \\
   \printphonenum \\
-  \printemail \par
+  \printemail
   \printurl
   \printgithub
 }
