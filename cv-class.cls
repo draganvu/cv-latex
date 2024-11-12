@@ -83,10 +83,14 @@
 \newcommand*{\printname}{\@myname}
 \newcommand*{\printaddress}{\@myaddress}
 
-\newcommand*{\printphonenum}{\@phonelabel\ \@phonenum}
+\newcommand*{\printphonenum}{%
+  \ifthenelse{\equal{\@phonelabel}{}}%
+  {\@phonenum\par}
+  {\@phonelabel\ \@phonenum\par}
+}
 
 \newcommand*{\printemail}{%
-  \ifthenelse{\isundefined{\@emaillabel}}
+  \ifthenelse{\equal{\@emaillabel}{}}%
   {\href{mailto:\@emailaddress}{\@emailaddress}\par}
   {\@emaillabel\ \href{mailto:\@emailaddress}{\@emailaddress}\par}
 }
@@ -111,8 +115,8 @@
   {\Huge \printname}
   
   \smallskip
-  \printaddress \\
-  \printphonenum \\
+  \printaddress\\
+  \printphonenum
   \printemail
   \printurl
   \printgithub
